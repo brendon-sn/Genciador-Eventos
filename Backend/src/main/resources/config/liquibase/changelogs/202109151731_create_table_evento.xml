@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+        <changeSet id="202109152253" author="AdrielSkt">
+            <createTable tableName="EVENTO">
+                <column name="ID" type="int" remarks="id do evento" autoIncrement="true">
+                    <constraints primaryKey="true"/>
+                </column>
+                <column name="NOME" type="varchar(70)" remarks="nome do evento">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="DATA" type="date" remarks="data do evento criado">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="JUSTIFICATIVA_ADIANTAMENTO" type="varchar(200)" remarks="Justificativa de adiantamento do evento" />
+                <column name="VALOR" type="decimal" remarks="valor total do lanche">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="ID_MOTIVO" type="int" remarks="motivo do evento">
+                    <constraints nullable="false"/>
+                </column>
+                <column name="ID_SITUACAO" type="int" remarks="situacao do evento">
+                    <constraints nullable="false"/>
+                </column>
+            </createTable>
+        </changeSet>
+
+        <changeSet id="202109152346" author="AdrielSkt">
+            <addForeignKeyConstraint baseTableName="EVENTO"
+                                     baseColumnNames="ID_MOTIVO"
+                                     constraintName="FK_MOTIVO_EVENTO"
+                                     referencedTableName="MOTIVO"
+                                     referencedColumnNames="ID"/>
+            <addForeignKeyConstraint baseTableName="EVENTO"
+                                     baseColumnNames="ID_SITUACAO"
+                                     constraintName="FK_SITUACAO_EVENTO"
+                                     referencedTableName="SITUACAO"
+                                     referencedColumnNames="ID"/>
+        </changeSet>
+
+</databaseChangeLog>

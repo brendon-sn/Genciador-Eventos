@@ -1,0 +1,9 @@
+version: '2'
+services:
+  rrm-postgres:
+    image:  postgres:11.5
+    environment:
+      - POSTGRES_USER=rrm_user
+      - POSTGRES_PASSWORD=rrm_user
+    ports:
+    - 5432:5432

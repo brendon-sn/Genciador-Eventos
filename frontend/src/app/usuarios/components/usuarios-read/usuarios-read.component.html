@@ -1,0 +1,85 @@
+<div class="ui-g">
+    <p-card class="ui-sm-12 ui-md-12 ui-lg-11">
+        <p-table [value]="usuarios" [paginator]="true" [rows]="10"
+            selectionMode="single" [(selection)]="usuarioSelecionado">
+            <ng-template pTemplate="caption">
+                <h3>USUARIOS</h3>
+                <div class="ui-table-globalfilter-container">
+                   <label >usuarios Ativos</label>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th *ngFor="let header of headers">
+                        <strong>{{header}}</strong>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-usuario>
+                <tr [pSelectableRow]="usuario">
+                    <td>
+                        {{usuario.nome}}
+                    </td>
+                    <td>
+                        {{usuario.cargo.label}}
+                    </td>
+                </tr>
+
+            </ng-template>
+        </p-table>
+    </p-card>
+    <p-card class="ui-sm-12 ui-md-12 ui-lg-1">
+        <div class="botoes">
+            <p-button class="ui-fluid" label="Visualizar" (click)="mostrar()" [disabled]="!(usuarioSelecionado)"></p-button>
+            <p-button class="ui-fluid" label="Desativar Usuario" (click)="inativarUsuario()" [disabled]="!(usuarioSelecionado)"></p-button>
+           
+        </div>
+    </p-card>
+</div>
+
+<p-dialog draggable="" [(visible)]="ativadorDialog" *ngIf="ativadorDialog">
+
+        <form id="msform" [formGroup]="form">
+            <p-panel class="ui-fluid">
+                <div class="p-field">
+                    <br>
+                    <h2 class="fs-title">USUARIO</h2>
+                    <h3 class="fs-subtitle">Informações</h3>
+                    NOME <i class="pi pi-user"></i>
+                    <input pInputText type="text" formControlName="nome" value="form.nome" />
+                </div>
+                <div class="p-field">
+                    CPF <i class="pi pi-id-card"></i>
+                    <p-inputMask class="cpf" type="text" mask="999.999.999-99" formControlName="cpf" value="form.cpf"></p-inputMask>
+                </div>
+                <div class="p-field">
+                    DATA DE NASCIMENTO <i class="pi pi-user-plus"></i>
+                    <p-calendar class="formInput" dateFormat="dd/mm/yy" formControlName="dataNascimento"></p-calendar>
+                </div>
+                <div class="p-field">
+                    E-MAIL <i class="pi pi-envelope"></i>
+                    <input pInputText type="text" formControlName="email" value="form.email" />
+                </div>
+                <div class="p-field">
+                    TELEFONE <i class="pi pi-phone"></i>
+                    <p-inputMask pInputText type="text" mask="(99)9 9999-9999" formControlName="telefone" value="form.telefone"></p-inputMask>
+                </div>
+                <div class="p-field">
+                    CARGO <i class="pi pi-users"></i>
+                    <p-dropdown class="p-dropdown-label" [options]="cargos" formControlName="cargo"></p-dropdown>
+                    <br><br><br>
+                </div>
+            </p-panel>
+    
+            <div class="botoesDialog">
+                <p-button (click)="habilitarEdicao()" label="Editar" class="action-button"></p-button>
+                <p-button [disabled]="habilitarSalvar" (click)="editarUsuario()" label="Salvar" class="action-button">
+                </p-button>
+            </div>
+    
+    
+        </form>
+
+</p-dialog>
+
+<p-confirmDialog position="bottom" header="Confirmar" icon="pi pi-exclamation-triangle"></p-confirmDialog>

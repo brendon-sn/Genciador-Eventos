@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: rrm
+  profiles:
+    active: test
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:mem:rrm
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  liquibase:
+    change-log: classpath:/config/liquibase/master.xml
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: "email que sera utilizado para o envio das mensagens"
+    password: "senha"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          quitwait: false
+application:
+  email:
+    endereco-remetente: "email que sera utilizado para o envio das mensagens"
+    nome-remetente: Roleta Russa 

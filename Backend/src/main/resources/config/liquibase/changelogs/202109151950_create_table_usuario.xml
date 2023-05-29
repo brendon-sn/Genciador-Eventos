@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="202109151952" author="TheoGallo">
+        <createTable tableName="USUARIO">
+            <column name="ID" type="INT" remarks="identificador unico do usuario" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="NOME" type="VARCHAR(30)" remarks="Nome do usuario">
+                <constraints nullable="false" />
+            </column>
+            <column name="CPF" type="VARCHAR(11)" remarks="CPF sem pontos ou traços">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="DT_NASCIMENTO" type="DATE" remarks="Data de nascimento do usuario">
+                <constraints nullable="false" />
+            </column>
+            <column name="EMAIL" type="VARCHAR(50)" remarks="email do usuario">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="TELEFONE" type="VARCHAR(15)" remarks="numero de telefone com codigo de area" />
+            <column name="ST_ATIVO" type="BOOLEAN" remarks="Status de usuario ativo">
+                <constraints nullable="false" />
+            </column>
+            <column name="ID_CARGO" type="INT" remarks="cargo chave estrangeira">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

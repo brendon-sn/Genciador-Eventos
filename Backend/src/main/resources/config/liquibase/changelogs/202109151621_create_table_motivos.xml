@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="202109151626" author="LyndaleeMuniz">
+        <createTable tableName="MOTIVO">
+            <column name="ID" type="INT" remarks="identificador motivo" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="MOTIVO"  type="varchar(30)" remarks="nome do motivo">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRICAO" type="varchar(200)" remarks="descricao do motivo"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

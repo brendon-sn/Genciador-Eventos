@@ -1,0 +1,72 @@
+
+h2{
+    text-align: center;
+    color: #5080CE;
+   
+}
+
+strong{
+font-size: 20px;
+
+}
+
+
+td{
+    text-align: center; 
+
+}
+.divDlg{
+	width: 1000px;
+}
+
+
+
+
+.p-field{
+
+    margin-right: 30%;
+}
+.p-formgroup-inline{
+    display: flex;
+    align-items: center;
+}
+
+
+
+.fs-title {
+	text-align: center;
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
+
+.cardForm{
+
+	// width: 200%;
+	align-items: center;
+	padding-left: 40%;
+	
+}
+
+.ui-fluid div{
+	margin: 5px auto;
+	text-align: center;
+
+}
+
+.p-field{
+
+	input, p-input, .cpf input, p-dropdown{
+		margin: 5px auto;
+		text-align: center;
+		
+		
+	}
+}

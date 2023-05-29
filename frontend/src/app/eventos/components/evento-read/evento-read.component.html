@@ -1,0 +1,68 @@
+<div class="ui-g">
+
+<p-card class="ui-sm-12 ui-md-6 ui-lg-6" header="Próximos Eventos">
+    <div class="timeline">
+        <div class="entry" *ngFor="let evento of eventos">
+            <div class="title">
+                <p>{{evento.dataEvento | date: 'MMM'}}</p>
+                <h3>{{evento.dataEvento | date: 'dd'}}</h3>
+            </div>
+            <div class="body">
+                <p-button label="{{evento.nome}}" (onClick)="mostrar(evento.id)"></p-button>
+            </div>
+        </div>
+    </div>
+</p-card>
+
+<p-card class="ui-sm-12 ui-md-6 ui-lg-6" header="Buscar Evento">
+    Insira um ou mais dos parâmetros abaixo e clique no botão para realizar a busca. <br/>
+    <form [formGroup]="buscaForm">
+        <label>Nome</label>  <br/>
+        <input pInputText type="text" formControlName="nome" />  <br/><br/>
+        <label>Data</label>  <br/>
+        <p-calendar formControlName="data" showButtonBar="true" [locale]="br"> </p-calendar> <br/><br/>
+        <label>Motivo</label>  <br/>
+        <input pInputText type="text" formControlName="motivo" />  <br/><br/>
+        <label>Situação</label>  <br/>
+        <input pInputText type="text" formControlName="situacao" />  <br/><br/>
+        <label>Nome de Usuário</label>  <br/>
+        <input pInputText type="text" formControlName="usuario" />  <br/><br/>
+    </form>
+    <br />
+    <p-button icon="pi pi-search" label="Buscar" (onClick)="filtrar()"></p-button>
+</p-card>
+
+</div>
+
+<p-dialog draggable="false" closable="false" header="Detalhes do evento" [(visible)]="mostrarEvento">
+    <div *ngIf="mostrarEvento">
+        <div class="HeaderModal">
+            <span class="NomeEvento">{{eventoCompleto.nome}}</span> <br />
+            <span class="DataGrande">{{eventoCompleto.situacao.label}}, {{eventoCompleto.dataEvento | date: 'dd/MM/yyyy'}}</span>
+        </div>
+        
+        <p-card header="Detalhes" class="ui-sm-6 ui-md-6 ui-lg-6">
+            Valor: {{eventoCompleto.valor | currency: 'BRL'}}<br />
+            Motivo: {{eventoCompleto.motivo.label}}
+        </p-card>
+        <p-card header="Patrocinadores" class="ui-sm-6 ui-md-6 ui-lg-6">
+            <ul>
+                <li *ngFor="let usuario of eventoCompleto.usuario">
+                    {{usuario.label}}
+                </li>
+            </ul>
+        </p-card>
+        <p-fieldset  legend="Trocar data com outro evento" [toggleable]="isEventoAtivo" [collapsed]="true">
+                <p-dropdown [options]="listaSemEventoSelecionado" [virtualScroll]="true" itemSize="3"
+                    [(ngModel)]="eventoTroca" optionLabel="nome" placeholder="-- Selecione --">
+                </p-dropdown> <br />
+                <p-button label="Trocar com este evento" (onClick)="trocar(eventoCompleto.id)"></p-button>
+        </p-fieldset>
+    </div>
+    <p-footer *ngIf="isEventoAtivo">
+        <p-button label="Adiar em 1 semana" (onClick)="adiar(eventoCompleto.id)"></p-button>
+        <p-button label="Cancelar o Evento" (onClick)="cancelar(eventoCompleto.id)"></p-button>
+    </p-footer>
+</p-dialog>
+
+<p-confirmDialog position="bottom" header="Confirmar" icon="pi pi-exclamation-triangle"></p-confirmDialog>

@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: rrm
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: rrm_user
+    password: rrm_user
+  liquibase:
+    change-log: classpath:/config/liquibase/master.xml
+#    drop-first: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 
+    password: 
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          quitwait: false
+application:
+  email:
+    endereco-remetente: roletarussamanager@gmail.com
+    nome-remetente: Roleta Russa Manager

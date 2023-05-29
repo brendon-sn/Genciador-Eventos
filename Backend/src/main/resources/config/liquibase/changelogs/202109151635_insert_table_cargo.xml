@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="202009151635" author="TheoGallo">
+        <insert tableName="CARGO">
+            <column name="CARGO" value="Estagiário" />
+        </insert>
+    </changeSet>
+    <changeSet id="202109151704" author="TheoGallo">
+        <insert tableName="CARGO">
+            <column name="CARGO" value="Júnior" />
+        </insert>
+    </changeSet>
+    <changeSet id="202109151705" author="TheoGallo">
+        <insert tableName="CARGO">
+            <column name="CARGO" value="Pleno" />
+        </insert>
+    </changeSet>
+    <changeSet id="202109151706" author="TheoGallo">
+        <insert tableName="CARGO">
+            <column name="CARGO" value="Senior" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

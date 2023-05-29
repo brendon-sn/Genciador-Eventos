@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="202109152014" author="TheoGallo">
+        <createTable tableName="USUARIO_EVENTO">
+            <column name="USUARIO" type="INT" remarks="ID do usuario que patrocina">
+                <constraints primaryKey="true" primaryKeyName="PK_USUARIO_EVENTO" />
+            </column>
+            <column name="EVENTO" type="INT" remarks="ID do evento">
+                <constraints primaryKey="true" primaryKeyName="PK_USUARIO_EVENTO" />
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

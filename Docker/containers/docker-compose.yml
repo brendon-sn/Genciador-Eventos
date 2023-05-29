@@ -1,0 +1,7 @@
+version: '2'
+services:
+  rrm-postgres:
+    extends:
+      file: postgres/postgres.yml
+      service: rrm-postgres
+    container_name: rrm-postgres

@@ -1,0 +1,86 @@
+<div>
+    <form id="msform" [formGroup]="form">
+        <div class="ui-fluid p-field ui-sm-12 ui-md-12 ui-lg-10">
+            <p-panel header="Usuario" class="cardForm fs-title">
+                <div class="p-field">
+                    NOME <i class="pi pi-user"></i>
+                    <input pInputText type="text" formControlName="nome" value="form.nome" />
+                </div>
+                <div class="p-field">
+                    CPF <i class="pi pi-id-card"></i>
+                    <p-inputMask type="text" formControlName="cpf" mask="999.999.999-99" unmask="true" value="form.cpf"></p-inputMask>
+                </div>
+                <div class="p-field">
+                    DATA DE NASCIMENTO <i class="pi pi-user-plus"></i>
+                    <p-calendar class="formInput" dateFormat="dd/mm/yy" formControlName="dataNascimento"></p-calendar>
+                </div>
+                <div class="p-field">
+                    E-MAIL <i class="pi pi-envelope"></i>
+                    <input pInputText type="text" formControlName="email" value="form.email" />
+                </div>
+                <div class="p-field">
+                    TELEFONE <i class="pi pi-phone"></i>
+                    <p-inputMask pInputText type="text" mask="(99)9 9999-9999" unmask="true" formControlName="telefone" value="form.telefone"></p-inputMask>
+                </div>
+                <div class="p-field">
+                    CARGO <i class="pi pi-users"></i>
+                    <p-dropdown [options]="cargos" formControlName="cargo"></p-dropdown>
+                    <br><br><br>
+                    <p-button (click)="criarUsuario()" label="Salvar" class="action-button"></p-button>
+                </div>
+            </p-panel>
+
+            <div class="ui-sm-12 ui-md-12 ui-lg-2">
+                <p-button label="Ativar Usuario" (click)="mostrarLista()"> </p-button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<p-dialog dragable="" [(visible)]="habilitador">
+
+    <div class="ui-g divDlg">
+        <p-card class="ui-sm-12 ui-md-12 ui-lg-11">
+            <p-table [value]="usuarios" selectionMode="single" [(selection)]="usuarioSelecionado">
+                <ng-template pTemplate="caption">
+                    <h3>USUARIOS</h3>
+                    <div class="ui-table-globalfilter-container">
+                        <label>usuarios Inativ</label>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>
+                            <strong>NOME</strong>
+                        </th>
+                        <th>
+                            <strong>CARGO</strong>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-usuario>
+                    <tr [pSelectableRow]="usuario">
+                        <td>
+                            {{usuario.nome}}
+                        </td>
+                        <td>
+                            {{usuario.cargo.label}}
+                        </td>
+                    </tr>
+
+                </ng-template>
+            </p-table>
+        </p-card>
+        <p-card class="ui-sm-12 ui-md-12 ui-lg-1">
+            <div>
+                <p-button class="ui-fluid" label="Ativar" (click)="ativarUsuario()" [disabled]="!(usuarioSelecionado)">
+                </p-button>
+
+
+            </div>
+        </p-card>
+    </div>
+
+</p-dialog>

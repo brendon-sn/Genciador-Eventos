@@ -1,0 +1,29 @@
+<p-card>
+  <div class="ui-g">
+    <p-panel class="ui-sm-12 ui-md-12 ui-lg-4" header="Dados do Evento">
+      <form [formGroup]="form">
+        <fieldset>
+            <label>Nome </label>
+            <input type="text" formControlName="nome" value="form.nome" pInputText /> <br />
+            <label>Data </label>
+            <p-calendar formControlName="dataEvento" [minDate]="minDateValue"></p-calendar> <br />
+            <label>Valor(R$) </label>
+            <input type="text" formControlName="valor" pInputText /> <br />
+            <label>Motivo </label>
+            <p-dropdown [options]="motivos" formControlName="motivo" placeholder="-- Selecione --"></p-dropdown>
+        </fieldset>
+      </form>
+    </p-panel>
+    <p-panel class="ui-sm-12 ui-md-12 ui-lg-8" header="Adicionar Patrocinadores">
+      <p-pickList [responsive]=true [source]="usuariosAtivos" [target]="usuariosEvento" sourceHeader="Usuários Ativos" targetHeader="Usuários no Evento">
+        <ng-template let-usuario pTemplate="item">
+            <div class="ui-helper-clearfix">
+                <div>{{usuario.label}}</div>
+            </div>
+        </ng-template>
+      </p-pickList>
+    </p-panel>
+  </div>
+  <p-button label="Criar este evento" (onClick)="criarEvento()"></p-button>
+</p-card>
+
