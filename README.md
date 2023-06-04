@@ -26,7 +26,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Sistema de gerenciamento desenvolvido para eventos informais em equipes, com a presença de um usuário pagante (patrocinador) por evento. Ele permite controlar o status de pagamento das pessoas, agendar eventos futuros, facilitar acordos entre os membros da equipe, como trocas entre os patrocinadores, adiamentos inteligentes e divisão de despesas entre múltiplos patrocinadores.
+Desenvolvi um sistema de gerenciamento voltado para eventos informais em equipes, que conta com a presença de um usuário pagante, conhecido como patrocinador, em cada evento. Esse sistema tem como objetivo facilitar o controle do status de pagamento dos participantes, agendar eventos futuros e simplificar acordos entre os membros da equipe, como trocas entre os patrocinadores, adiamentos inteligentes e divisão de despesas entre múltiplos patrocinadores.
+
+Com esse sistema, os organizadores e participantes dos eventos têm a possibilidade de gerenciar de forma mais eficiente as questões financeiras, agendamentos e acordos internos da equipe, proporcionando uma experiência mais organizada e colaborativa durante a realização dos eventos informais.
 
 ## 📑 Como executar
 
